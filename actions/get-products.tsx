@@ -12,7 +12,7 @@ interface Query {
 const URL = `${process.env.NEXT_PUBLIC_API_URL}/products`;
 
 const getProducts = async (query: Query): Promise<Product[]> => {
-  const url = qs.stringify({
+  const url = qs.stringifyUrl({
     url: URL,
     query: {
       colorId: query.colorId,
@@ -21,8 +21,8 @@ const getProducts = async (query: Query): Promise<Product[]> => {
       isFeatured: query.isFeatured,
     },
   });
-  console.log(url);
-  const res = await fetch(URL, { next: { revalidate: 0 } });
+
+  const res = await fetch(url, { next: { revalidate: 0 } });
   return res.json();
 };
 
