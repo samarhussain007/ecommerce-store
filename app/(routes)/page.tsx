@@ -11,7 +11,9 @@ const HomePage = async () => {
     isFeatured: true,
   });
 
-  const billboard = await getBillboard("fd1cc74b-7a4f-43c7-a8df-cf1a5b424a52");
+  console.log(products);
+
+  const billboard = await getBillboard("11e92db3-b3e7-46d0-8d4f-41161b4da048");
   return (
     <Container>
       <div className="space-y-10 pb-10">
