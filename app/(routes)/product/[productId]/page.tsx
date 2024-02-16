@@ -4,6 +4,7 @@ import Info from "@/components/Info";
 import ProductList from "@/components/ProductList";
 import Gallery from "@/components/gallery";
 import { Container } from "@/components/ui/Container";
+import useCart from "@/hooks/use-cart";
 
 interface ProductPageProps {
   params: {
@@ -13,10 +14,11 @@ interface ProductPageProps {
 
 const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
   const product = await getProduct(params?.productId);
-  console.log(product);
+
   const suggestedProducts = await getProducts({
     categoryId: product?.category?.id,
   });
+
   return (
     <div className="bg-white">
       <Container>
